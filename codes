@@ -1,0 +1,39 @@
+#Importing the libraries
+
+import numpy as np
+import pandas as pd
+
+# Importing the dataset
+dataset = pd.read_csv('trump_forbes_richest_americans.csv')
+
+
+# reading the worth column
+
+file = 'trump_forbes_richest_americans.csv'
+
+#storing the csv data file into numpy 2d array
+numpy_file = np.genfromtxt(file, dtype=float, delimiter=",")
+
+# worth is the last column of 2d matrix numpy_file
+
+worth = numpy_file[1:,-1]
+
+# printing the worth
+
+print(worth)
+
+
+#checking where is nan in worth array
+masked_worth = np.isnan(worth)
+
+#masking the worth data
+worth[masked_worth] = 0
+
+
+# worth array after masking
+print(worth)
+
+# mean of masked worth
+
+print(worth.mean())
+
